@@ -8,7 +8,7 @@ var width = cnvs.width;
 var height = cnvs.height;
 
 function DrawPlayer() {
-	ctx.fillRect(player.x,player.y,10,10);
+	ctx.fillRect(player.x + 8, player.y + 8,10,10);
 }
 
 function DrawMaze() {
@@ -24,7 +24,7 @@ function DrawMaze() {
 	}
 	for(var i = 0; i < hrLines.length; ++i) {
 		for(var j = 0; j < hrLines[i].length; ++j) {
-			if(hrLines[i][j]) {
+			if(vrLines[i][j]) { // aici era bug, ai pus inainte hr
 				ctx.beginPath();
 				ctx.moveTo(blockSize*i,blockSize*j);
 				ctx.lineTo(blockSize*i,blockSize*(j+1));
@@ -32,12 +32,12 @@ function DrawMaze() {
 			}
 		}
 	}
-
 }
 
 function Render() {
 	DrawPlayer();
 	DrawMaze();
+	MovePlayer();
 }
 
 Render();
